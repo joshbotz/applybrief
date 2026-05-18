@@ -1,0 +1,14 @@
+warmapply
+Copyright 2026 Josh Botz
+
+This product includes software developed by:
+
+- LiteLLM (https://github.com/BerriAI/litellm) — MIT
+- JobSpy (https://github.com/speedyapply/JobSpy) — MIT
+- linkedin-scraper-mcp (https://github.com/stickerdaniel/linkedin-mcp-server)
+  — Apache-2.0
+- Typer (https://github.com/fastapi/typer) — MIT
+- Rich (https://github.com/Textualize/rich) — MIT
+
+Several agent prompts and the pipeline schema were adapted from:
+- ai-job-hunt-toolkit (https://github.com/dfrysinger/ai-job-hunt-toolkit) — MIT

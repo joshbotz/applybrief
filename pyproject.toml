@@ -1,0 +1,37 @@
+[project]
+name = "applybrief"
+version = "0.1.0"
+description = "An honest 1-page brief for every job you might apply to — fit assessment, tailored cover letter, interview prep, manual outreach plan."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Josh Botz", email = "josh@pillarsecurity.io" }]
+requires-python = ">=3.11"
+dependencies = [
+    "typer>=0.12",
+    "rich>=13.7",
+    "litellm>=1.50",
+    "httpx>=0.27",
+    "markdownify>=0.13",
+    "pydantic>=2.7",
+    "platformdirs>=4.2",
+    "pyyaml>=6.0",
+    "python-jobspy>=1.1",
+    "pyperclip>=1.9",
+    "jinja2>=3.1",
+    "markdown-it-py>=3.0",
+    "pypdf>=4.0",
+    "python-docx>=1.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.5"]
+
+[project.scripts]
+applybrief = "applybrief.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/applybrief"]

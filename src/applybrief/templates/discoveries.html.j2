@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:           #2B2B2B;
+    --surface:      #353535;
+    --surface-2:    #3E3E3E;
+    --rule:         #4A4742;
+    --text:         #FFFFFF;
+    --text-soft:    #C5C5C5;
+    --text-faint:   #8B8680;
+
+    --accent:       #8B5CF6;
+    --accent-2:     #00E5CC;
+
+    --green:      #66BB6A; --green-soft: rgba(102, 187, 106, 0.16);
+    --amber:      #FFA726; --amber-soft: rgba(255, 167, 38, 0.16);
+    --red:        #FF6B6B; --red-soft:   rgba(255, 107, 107, 0.16);
+  }
+  html, body { background: var(--bg); color: var(--text); }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .text-soft { color: var(--text-soft); }
+  .text-faint { color: var(--text-faint); }
+  .rule { border-color: var(--rule); }
+  .accent { color: var(--accent); }
+
+  .logotype {
+    font-weight: 800; letter-spacing: -.01em; color: var(--text); font-size: .95rem;
+  }
+  .logotype .dot { color: var(--accent); }
+
+  .chip {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: .15rem .55rem; border-radius: 999px;
+    font-size: .75rem; font-weight: 700; min-width: 2.3rem;
+  }
+  .chip-green   { background: var(--green-soft); color: var(--green); }
+  .chip-amber   { background: var(--amber-soft); color: var(--amber); }
+  .chip-red     { background: var(--red-soft);   color: var(--red); }
+  .chip-neutral { background: var(--surface-2);  color: var(--text-soft); }
+
+  table.disc {
+    width: 100%; border-collapse: collapse;
+    background: var(--surface); border: 1px solid var(--rule);
+    border-radius: 12px; overflow: hidden;
+  }
+  table.disc thead th {
+    background: var(--surface-2); color: var(--text-soft);
+    text-align: left; font-weight: 700; font-size: .75rem;
+    text-transform: uppercase; letter-spacing: .05em;
+    padding: .7rem .85rem; border-bottom: 1px solid var(--rule);
+    cursor: pointer; user-select: none; white-space: nowrap;
+  }
+  table.disc thead th:hover { color: var(--accent); }
+  table.disc thead th .arrow { color: var(--accent); margin-left: .25rem; font-size: .7rem; }
+  table.disc tbody td {
+    padding: .65rem .85rem; border-bottom: 1px solid var(--rule);
+    font-size: .9rem; vertical-align: top; color: var(--text-soft);
+  }
+  table.disc tbody tr.main { cursor: pointer; }
+  table.disc tbody tr.main:hover { background: var(--surface-2); }
+  table.disc tbody tr.detail { background: rgba(139, 92, 246, 0.08); }
+  table.disc tbody tr.detail td { padding: .9rem 1.1rem; color: var(--text-soft); font-size: .85rem; line-height: 1.55; }
+  table.disc td.company { font-weight: 600; color: var(--text); }
+  table.disc td.title-cell { color: var(--text); }
+  table.disc a { color: var(--accent); text-decoration: none; }
+  table.disc a:hover { color: var(--accent-2); text-decoration: underline; }
+  .truncate-2 {
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden; max-width: 26ch;
+  }
+  input[type="text"], input[type="number"] {
+    border: 1px solid var(--rule); border-radius: 8px;
+    padding: .45rem .7rem; font-size: .9rem; background: var(--surface);
+    color: var(--text); outline: none;
+  }
+  input[type="text"]::placeholder { color: var(--text-faint); }
+  input[type="text"]:focus, input[type="number"]:focus { border-color: var(--accent); }
+  input[type="range"] { accent-color: var(--accent); }
+
+  @media print {
+    @page { margin: 0.5in; }
+    html, body { background: white !important; color: #1a1a1a !important; }
+    .no-print { display: none !important; }
+    table.disc { background: white; border: 1px solid #aaa; }
+    table.disc thead th { background: white; color: #1a1a1a; border-bottom: 1px solid #555; }
+    table.disc tbody td { color: #333; }
+    table.disc tbody tr.detail { display: none; }
+    table.disc td.company, table.disc td.title-cell { color: #1a1a1a; }
+    table.disc a { color: #1a1a1a; text-decoration: underline; }
+    .text-soft, .text-faint { color: #444 !important; }
+    .logotype, .logotype .dot { color: #1a1a1a !important; }
+    .chip { border: 1px solid currentColor; }
+  }
+</style>
+</head>
+<body>
+<div class="max-w-6xl mx-auto px-6 py-10">
+
+  <!-- Header -->
+  <header class="mb-7">
+    <div class="flex items-start justify-between mb-5">
+      <span class="logotype">apply<span class="dot">·</span>brief</span>
+      <span class="text-faint text-xs uppercase tracking-wider">Discoveries</span>
+    </div>
+    <h1 class="text-3xl font-extrabold mb-2">{{ title }}</h1>
+    <div class="flex flex-wrap gap-x-5 gap-y-1 text-sm text-soft">
+      {% if date %}<span><span class="text-faint">Date</span> · {{ date }}</span>{% endif %}
+      {% if location %}<span><span class="text-faint">Location</span> · {{ location }}</span>{% endif %}
+      {% if sites %}<span><span class="text-faint">Sites</span> · {{ sites }}</span>{% endif %}
+      {% if hours_old %}<span><span class="text-faint">≤</span> {{ hours_old }}h old</span>{% endif %}
+      <span><span class="text-faint">Results</span> · {{ total }}</span>
+    </div>
+  </header>
+
+  <!-- Filter bar -->
+  <div class="no-print flex flex-wrap items-center gap-3 mb-4">
+    <input type="text" id="filter-text" placeholder="Filter company or title…" class="flex-1 min-w-[16rem]">
+    <label class="text-sm text-soft flex items-center gap-2">
+      Hide fit &lt;
+      <input type="number" id="filter-fit" value="0" min="0" max="100" step="5" class="w-20">
+    </label>
+    <span id="row-count" class="text-sm text-faint"></span>
+  </div>
+
+  <!-- Table -->
+  <div class="overflow-x-auto">
+    <table class="disc" id="disc-table">
+      <thead>
+        <tr>
+          <th data-sort="num" data-col="fit">Fit <span class="arrow"></span></th>
+          <th data-sort="str" data-col="company">Company <span class="arrow"></span></th>
+          <th data-sort="str" data-col="title">Title <span class="arrow"></span></th>
+          <th data-sort="str" data-col="location">Location <span class="arrow"></span></th>
+          <th data-sort="str" data-col="posted">Posted <span class="arrow"></span></th>
+          <th data-sort="str" data-col="salary">Salary <span class="arrow"></span></th>
+          <th data-sort="str" data-col="site">Site <span class="arrow"></span></th>
+          <th>Why</th>
+          <th class="no-print">URL</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in rows %}
+        <tr class="main"
+            data-fit="{{ r.fit }}"
+            data-company="{{ r.company|lower }}"
+            data-title="{{ r.title|lower }}"
+            data-location="{{ r.location }}"
+            data-posted="{{ r.posted }}"
+            data-salary="{{ r.salary }}"
+            data-site="{{ r.site|lower }}">
+          <td><span class="chip chip-{{ r.fit_color }}">{{ r.fit }}</span></td>
+          <td class="company">{{ r.company }}</td>
+          <td class="title-cell">{{ r.title }}</td>
+          <td>{{ r.location }}</td>
+          <td>{{ r.posted }}</td>
+          <td>{{ r.salary }}</td>
+          <td class="text-faint">{{ r.site }}</td>
+          <td><div class="truncate-2">{{ r.why }}</div></td>
+          <td class="no-print">
+            {% if r.url %}<a href="{{ r.url }}" target="_blank" rel="noopener">open ↗</a>{% endif %}
+          </td>
+        </tr>
+        <tr class="detail" hidden>
+          <td colspan="9">
+            <div><strong>Why:</strong> {{ r.why or '—' }}</div>
+            {% if r.url %}<div class="mt-2"><a href="{{ r.url }}" target="_blank" rel="noopener">{{ r.url }} ↗</a></div>{% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-10 pt-6 border-t rule text-xs text-faint flex flex-wrap items-center justify-between gap-3">
+    <span>
+      Generated by <span class="logotype">apply<span class="dot">·</span>brief</span> v{{ version }}
+      · <a href="https://github.com/botz-pillar/applybrief" class="hover:underline accent" target="_blank" rel="noopener">github.com/botz-pillar/applybrief</a>
+    </span>
+    <a href="{{ md_filename }}" class="hover:underline accent">view markdown source</a>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var table = document.getElementById('disc-table');
+  if (!table) return;
+  var tbody = table.tBodies[0];
+
+  Array.from(tbody.querySelectorAll('tr.main')).forEach(function (row) {
+    row.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') return;
+      var next = row.nextElementSibling;
+      if (next && next.classList.contains('detail')) {
+        next.hidden = !next.hidden;
+      }
+    });
+  });
+
+  var filterText = document.getElementById('filter-text');
+  var filterFit = document.getElementById('filter-fit');
+  var rowCount = document.getElementById('row-count');
+  function applyFilter() {
+    var q = (filterText.value || '').trim().toLowerCase();
+    var minFit = parseInt(filterFit.value || '0', 10) || 0;
+    var shown = 0;
+    Array.from(tbody.querySelectorAll('tr.main')).forEach(function (row) {
+      var fit = parseInt(row.getAttribute('data-fit') || '0', 10);
+      var company = row.getAttribute('data-company') || '';
+      var title = row.getAttribute('data-title') || '';
+      var ok = fit >= minFit && (q === '' || company.indexOf(q) !== -1 || title.indexOf(q) !== -1);
+      row.hidden = !ok;
+      var detail = row.nextElementSibling;
+      if (detail && detail.classList.contains('detail')) {
+        if (!ok) detail.hidden = true;
+      }
+      if (ok) shown++;
+    });
+    rowCount.textContent = 'Showing ' + shown + ' of ' + {{ total }};
+  }
+  filterText.addEventListener('input', applyFilter);
+  filterFit.addEventListener('input', applyFilter);
+  applyFilter();
+
+  var sortState = { col: null, dir: 1 };
+  Array.from(table.tHead.querySelectorAll('th[data-sort]')).forEach(function (th) {
+    th.addEventListener('click', function () {
+      var col = th.getAttribute('data-col');
+      var type = th.getAttribute('data-sort');
+      var dir = (sortState.col === col) ? -sortState.dir : 1;
+      sortState = { col: col, dir: dir };
+      Array.from(table.tHead.querySelectorAll('th .arrow')).forEach(function (a) { a.textContent = ''; });
+      th.querySelector('.arrow').textContent = dir > 0 ? '▲' : '▼';
+      var pairs = [];
+      var mains = Array.from(tbody.querySelectorAll('tr.main'));
+      mains.forEach(function (m) {
+        var d = m.nextElementSibling;
+        pairs.push([m, (d && d.classList.contains('detail')) ? d : null]);
+      });
+      pairs.sort(function (a, b) {
+        var av = a[0].getAttribute('data-' + col) || '';
+        var bv = b[0].getAttribute('data-' + col) || '';
+        if (type === 'num') { return (parseFloat(av) - parseFloat(bv)) * dir; }
+        return av.localeCompare(bv) * dir;
+      });
+      pairs.forEach(function (p) {
+        tbody.appendChild(p[0]);
+        if (p[1]) tbody.appendChild(p[1]);
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

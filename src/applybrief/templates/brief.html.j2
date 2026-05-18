@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apply Brief — {{ role }}{% if company %} @ {{ company }}{% endif %}</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Brand: dark mode, purple primary, cyan secondary, white text */
+    --bg:           #2B2B2B;
+    --surface:      #353535;
+    --surface-2:    #3E3E3E;
+    --rule:         #4A4742;
+    --text:         #FFFFFF;
+    --text-soft:    #C5C5C5;
+    --text-faint:   #8B8680;
+
+    --accent:       #8B5CF6;    /* primary — purple */
+    --accent-soft:  rgba(139, 92, 246, 0.14);
+    --accent-2:     #00E5CC;    /* secondary — cyan, used on Next Action */
+    --accent-2-soft:rgba(0, 229, 204, 0.12);
+
+    /* Risk-color fit chips, brand-tinted */
+    --green:        #66BB6A;
+    --green-soft:   rgba(102, 187, 106, 0.16);
+    --amber:        #FFA726;
+    --amber-soft:   rgba(255, 167, 38, 0.16);
+    --red:          #FF6B6B;
+    --red-soft:     rgba(255, 107, 107, 0.16);
+  }
+  html, body { background: var(--bg); color: var(--text); }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .text-soft { color: var(--text-soft); }
+  .text-faint { color: var(--text-faint); }
+  .rule { border-color: var(--rule); }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+  }
+
+  .chip {
+    display: inline-flex; align-items: center; gap: .4rem;
+    padding: .3rem .75rem; border-radius: 999px;
+    font-size: .8rem; font-weight: 600; letter-spacing: .02em;
+  }
+  .chip-green   { background: var(--green-soft); color: var(--green); }
+  .chip-amber   { background: var(--amber-soft); color: var(--amber); }
+  .chip-red     { background: var(--red-soft);   color: var(--red); }
+  .chip-neutral { background: var(--surface-2);  color: var(--text-soft); }
+
+  .accent { color: var(--accent); }
+
+  /* Next Action: cyan callout — the decision the user takes away */
+  .next-action {
+    background: var(--accent-2-soft);
+    border: 1px solid rgba(0, 229, 204, 0.45);
+    border-left: 4px solid var(--accent-2);
+  }
+  .next-action .label { color: var(--accent-2); }
+
+  .prose-brief h3 { font-size: 1.05rem; font-weight: 700; margin: 1.25rem 0 .5rem; color: var(--text); }
+  .prose-brief p { margin: .65rem 0; line-height: 1.65; color: var(--text-soft); }
+  .prose-brief ul { margin: .5rem 0 .75rem 1.1rem; }
+  .prose-brief ul li { margin: .35rem 0; line-height: 1.55; color: var(--text-soft); }
+  .prose-brief ul li.task { list-style: none; margin-left: -1.1rem; padding-left: 0; }
+  .prose-brief strong { color: var(--text); font-weight: 600; }
+  .prose-brief em { color: var(--text-soft); }
+  .prose-brief blockquote {
+    border-left: 3px solid var(--accent);
+    padding: .25rem 0 .25rem 1rem;
+    margin: 1rem 0;
+    color: var(--text-soft);
+    font-style: italic;
+  }
+  .prose-brief code {
+    background: var(--surface-2); padding: .1rem .4rem; border-radius: 5px;
+    font-size: .9em; color: var(--accent);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  .prose-brief a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+  .prose-brief a:hover { color: var(--accent-2); }
+  .prose-brief hr { border: 0; border-top: 1px solid var(--rule); margin: 1.5rem 0; }
+  .prose-brief input[type="checkbox"] { accent-color: var(--accent); }
+
+  .logotype {
+    font-family: 'Inter', sans-serif; font-weight: 800; letter-spacing: -.01em;
+    color: var(--text); font-size: .95rem;
+  }
+  .logotype .dot { color: var(--accent); }
+
+  .btn-copy {
+    display: inline-flex; align-items: center; gap: .4rem;
+    padding: .4rem .75rem; border-radius: 8px;
+    border: 1px solid var(--rule); background: var(--surface-2);
+    font-size: .8rem; font-weight: 500; color: var(--text-soft);
+    cursor: pointer; transition: all .15s ease;
+  }
+  .btn-copy:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-copy.copied { background: var(--green-soft); color: var(--green); border-color: var(--green); }
+
+  @media print {
+    @page { margin: 0.55in; }
+    html, body { background: white !important; color: #1a1a1a !important; }
+    .no-print { display: none !important; }
+    .card { background: white !important; border: 1px solid #ccc; box-shadow: none; break-inside: avoid; }
+    .next-action { background: white !important; border: 1px solid #888; border-left: 3px solid #555; }
+    .next-action .label { color: #555 !important; }
+    .text-soft, .text-faint, .prose-brief p, .prose-brief ul li, .prose-brief em { color: #333 !important; }
+    .prose-brief strong, .prose-brief h3 { color: #1a1a1a !important; }
+    .prose-brief code { background: #eee !important; color: #1a1a1a !important; }
+    .prose-brief a { color: #1a1a1a !important; }
+    .chip { border: 1px solid currentColor; }
+    .logotype, .logotype .dot { color: #1a1a1a !important; }
+    section { break-inside: avoid-page; }
+  }
+</style>
+</head>
+<body>
+<div class="max-w-3xl mx-auto px-6 py-10">
+
+  <!-- Header -->
+  <header class="mb-8">
+    <div class="flex items-start justify-between mb-6">
+      <span class="logotype">apply<span class="dot">·</span>brief</span>
+      <span class="text-faint text-xs uppercase tracking-wider">Apply Brief</span>
+    </div>
+    <h1 class="text-4xl leading-tight font-extrabold mb-3">
+      {{ role }}
+      {% if company %}<span class="text-faint font-normal"> · {{ company }}</span>{% endif %}
+    </h1>
+    <div class="flex flex-wrap items-center gap-3 mb-4">
+      {% if fit is not none %}
+      <span class="chip chip-{{ fit_color }}">Fit · {{ fit }}/100</span>
+      {% endif %}
+      {% if date %}<span class="text-faint text-sm">{{ date }}</span>{% endif %}
+    </div>
+    {% if source %}
+    <a href="{{ source }}" target="_blank" rel="noopener" class="text-sm accent break-all hover:underline">
+      {{ source }} &nbsp;↗
+    </a>
+    {% endif %}
+  </header>
+
+  <!-- Sections -->
+  {% for s in sections %}
+    {% if s.is_next_action %}
+    <section id="{{ s.id }}" class="next-action rounded-2xl p-6 mb-6">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="text-xs font-semibold uppercase tracking-wider label">Next Action</span>
+      </div>
+      <div class="prose-brief">{{ s.html | safe }}</div>
+    </section>
+    {% else %}
+    <section id="{{ s.id }}" class="card p-7 mb-5">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="text-xl font-bold">{{ s.title }}</h2>
+        {% if s.is_cover_letter and s.cover_text %}
+        <button class="btn-copy no-print" data-copy-target="cover-text">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span class="label">Copy</span>
+        </button>
+        {% endif %}
+      </div>
+      <div class="prose-brief">{{ s.html | safe }}</div>
+      {% if s.is_cover_letter and s.cover_text %}
+      <textarea id="cover-text" class="sr-only" aria-hidden="true">{{ s.cover_text }}</textarea>
+      {% endif %}
+    </section>
+    {% endif %}
+  {% endfor %}
+
+  <!-- Footer -->
+  <footer class="mt-10 pt-6 border-t rule text-xs text-faint flex flex-wrap items-center justify-between gap-3">
+    <span>
+      Generated by <span class="logotype">apply<span class="dot">·</span>brief</span> v{{ version }}
+      · <a href="https://github.com/botz-pillar/applybrief" class="hover:underline accent" target="_blank" rel="noopener">github.com/botz-pillar/applybrief</a>
+    </span>
+    <a href="{{ md_filename }}" class="hover:underline accent">view markdown source</a>
+  </footer>
+</div>
+
+<script>
+(function () {
+  document.querySelectorAll('[data-copy-target]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var id = btn.getAttribute('data-copy-target');
+      var el = document.getElementById(id);
+      if (!el) return;
+      var text = el.value || el.textContent || '';
+      var done = function () {
+        btn.classList.add('copied');
+        var label = btn.querySelector('.label');
+        var prev = label ? label.textContent : '';
+        if (label) label.textContent = 'Copied';
+        setTimeout(function () {
+          btn.classList.remove('copied');
+          if (label) label.textContent = prev || 'Copy';
+        }, 1600);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(done).catch(function () {
+          fallbackCopy(text); done();
+        });
+      } else {
+        fallbackCopy(text); done();
+      }
+    });
+  });
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed'; ta.style.left = '-9999px';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+})();
+</script>
+</body>
+</html>
