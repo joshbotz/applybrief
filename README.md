@@ -114,4 +114,4 @@ Warm-intro engine (LinkedIn 2nd-degree lookup) is the next big thing. Other stuf
 
 ## License & author
 
-Apache 2.0. Built by Josh Botz — [@joshthebotz](https://joshthebotz.com). If ApplyBrief helped you land something, I'd love to hear about it: josh@pillarsecurity.io.
+Apache 2.0. Built by Josh Botz — [@joshthebotz](https://www.linkedin.com/in/joshthebotz/). If ApplyBrief helped you land something, I'd love to hear about it: josh@pillarsecurity.io.
