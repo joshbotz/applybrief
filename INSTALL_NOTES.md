@@ -7,7 +7,7 @@ The install script is one file, plain bash, no obfuscation. Read it: [install.sh
 ## The command
 
 ```
-curl -fsSL https://raw.githubusercontent.com/botz-pillar/applybrief/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/joshbotz/applybrief/main/install.sh | bash
 ```
 
 Paste into Terminal. Hit Enter.
@@ -19,7 +19,7 @@ Paste into Terminal. Hit Enter.
 3. **Checks for Python 3.11 or newer.** Installs `python@3.13` via Homebrew if missing.
 4. **Checks for pipx** (a safe way to install Python command-line tools). Installs via Homebrew if missing, then runs `pipx ensurepath` so `applybrief` lands on your PATH.
 5. **Checks for the 1Password CLI** (optional). Prints how to install it if you want, then continues.
-6. **Installs ApplyBrief** from a pinned GitHub tag with `pipx install git+https://github.com/botz-pillar/applybrief.git@v0.1.0`.
+6. **Installs ApplyBrief** from a pinned GitHub tag with `pipx install git+https://github.com/joshbotz/applybrief.git@v0.1.0`.
 
 ## What it does NOT do
 

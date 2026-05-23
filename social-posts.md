@@ -1,6 +1,6 @@
 # ApplyBrief — Launch Posts
 
-Repo: https://github.com/botz-pillar/applybrief
+Repo: https://github.com/joshbotz/applybrief
 Tagline: *The brief you wish someone wrote for every job you applied to.*
 
 ---
@@ -31,7 +31,7 @@ The point isn't to apply faster. It's to apply *better*, to *fewer* roles, with 
 
 If you or someone you know is in the apply-grind right now, it's free. Use it, fork it, tell me what's broken.
 
-github.com/botz-pillar/applybrief
+github.com/joshbotz/applybrief
 
 #opensource #jobsearch
 
@@ -47,7 +47,7 @@ So I built the tool I wish I'd had. It's a small CLI called ApplyBrief. Open sou
 
 It's outside what we do in the lab, but I'm sharing it here because (1) some of you are job hunting or know someone who is, and (2) it's a clean example of "small Python CLI, BYO LLM key, costs pennies" — same shape as a lot of the tooling we build in here.
 
-Repo: github.com/botz-pillar/applybrief
+Repo: github.com/joshbotz/applybrief
 
 Free. Apache-2.0. Fork it, break it, send it to a friend who needs it.
 
@@ -63,7 +63,7 @@ The "blast 500 résumés" trick doesn't work anymore because the filters caught 
 
 So this week I built the tool I wish I'd had. Free. It reads your résumé, finds you 10 good-fit jobs instead of 500 mediocre ones, and writes a tailored cover letter draft + a one-page interview prep brief for each one you actually want to apply to. Runs on your Mac or Windows PC, costs pennies, open source.
 
-If you're job hunting right now, or know someone who is — here's the repo: https://github.com/botz-pillar/applybrief
+If you're job hunting right now, or know someone who is — here's the repo: https://github.com/joshbotz/applybrief
 
 Please pass it along to anyone who needs it.
 
@@ -115,7 +115,7 @@ this is for you.
 Free. Open source. Runs on your laptop.
 
 **Slide 6 — CTA**
-github.com/botz-pillar/applybrief
+github.com/joshbotz/applybrief
 Link in bio.
 Share with a friend who's grinding apps.
 
@@ -142,7 +142,7 @@ What's NOT built yet: the piece I actually want most, a warm-intro engine that u
 
 Apache-2.0. Feedback welcome, especially from anyone who's hired in the last 12 months.
 
-https://github.com/botz-pillar/applybrief
+https://github.com/joshbotz/applybrief
 
 ---
 
@@ -160,7 +160,7 @@ It's called ApplyBrief. Free command-line tool. It reads your résumé, finds yo
 
 Runs on your Mac or Windows PC. Costs pennies per application (you bring your own AI key — I'll help you set that up if you want).
 
-Repo: https://github.com/botz-pillar/applybrief
+Repo: https://github.com/joshbotz/applybrief
 
 Try it. Tell me what's broken. And let me know how I can help beyond this — happy to do mock interviews, intro you to people, review your résumé, whatever.
 

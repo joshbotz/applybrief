@@ -11,13 +11,13 @@ The original name implied a warm-intro engine that isn't built yet. ApplyBrief n
 - Python package: `warmapply` → `applybrief`.
 - Data directory: `~/Library/Application Support/warmapply/` → `~/Library/Application Support/applybrief/`. Existing data is NOT migrated — run `applybrief init` again with your résumé.
 - Env var: `WARMAPPLY_MODEL` → `APPLYBRIEF_MODEL`.
-- Install URL: `github.com/botz-pillar/warmapply` → `github.com/botz-pillar/applybrief`.
+- Install URL: `github.com/botz-pillar/warmapply` → `github.com/joshbotz/applybrief`.
 
 ### How to upgrade
 
 ```
 pipx uninstall warmapply
-curl -fsSL https://raw.githubusercontent.com/botz-pillar/applybrief/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/joshbotz/applybrief/main/install.sh | bash
 applybrief init
 ```
 

@@ -14,7 +14,7 @@ The install script is one file, plain PowerShell, no obfuscation. Read it: [inst
 ## The command
 
 ```powershell
-iex (iwr -useb https://raw.githubusercontent.com/botz-pillar/applybrief/main/install.ps1).Content
+iex (iwr -useb https://raw.githubusercontent.com/joshbotz/applybrief/main/install.ps1).Content
 ```
 
 Paste into PowerShell. Hit Enter.
@@ -26,7 +26,7 @@ Paste into PowerShell. Hit Enter.
 3. **Checks for Python 3.11 or newer.** Installs `Python.Python.3.12` via winget if missing. You may see a UAC prompt — click Yes.
 4. **Checks for pipx.** Installs via `python -m pip install --user pipx`, then runs `pipx ensurepath` so `applybrief` lands on your PATH in new windows.
 5. **1Password CLI hint** (optional). Prints how to enable it inside the 1Password desktop app and continues.
-6. **Installs ApplyBrief** from a pinned GitHub tag with `pipx install git+https://github.com/botz-pillar/applybrief.git@v0.1.0`.
+6. **Installs ApplyBrief** from a pinned GitHub tag with `pipx install git+https://github.com/joshbotz/applybrief.git@v0.1.0`.
 7. **Runs `applybrief doctor`** to verify everything works.
 
 ## What you'll see

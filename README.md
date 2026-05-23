@@ -15,19 +15,19 @@ A couple of years ago I sent 350+ job applications over six months. A handful of
 **Mac.** Paste into Terminal:
 
 ```
-curl -fsSL https://raw.githubusercontent.com/botz-pillar/applybrief/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/joshbotz/applybrief/main/install.sh | bash
 ```
 
 **Windows (10/11).** Paste into PowerShell:
 
 ```
-iex (iwr -useb https://raw.githubusercontent.com/botz-pillar/applybrief/main/install.ps1).Content
+iex (iwr -useb https://raw.githubusercontent.com/joshbotz/applybrief/main/install.ps1).Content
 ```
 
 **Linux.** Needs Python 3.11+ and pipx already installed:
 
 ```
-pipx install git+https://github.com/botz-pillar/applybrief.git@v0.1.0
+pipx install git+https://github.com/joshbotz/applybrief.git@v0.1.0
 ```
 
 <details>
@@ -94,7 +94,7 @@ Things that don't work well yet — please tell me when you hit one:
 - **Windows install has been Mac-side dry-run validated but not yet tested on a real Windows box.** If you're a Windows user trying this first — bless you, and please tell me anything that breaks.
 - **No warm-intro engine yet.** The brief tells you exactly who to look for on LinkedIn and includes a sample DM, but the lookup is manual. Building the engine is the next chunk of work.
 
-**Tell me what's broken or weak.** Open an issue: [github.com/botz-pillar/applybrief/issues](https://github.com/botz-pillar/applybrief/issues). Email me: josh@pillarsecurity.io. I'm building this with friends in mind — every report makes the next version better.
+**Tell me what's broken or weak.** Open an issue: [github.com/joshbotz/applybrief/issues](https://github.com/joshbotz/applybrief/issues). Email me: josh@pillarsecurity.io. I'm building this with friends in mind — every report makes the next version better.
 
 ## FAQ
 
@@ -114,4 +114,4 @@ Warm-intro engine (LinkedIn 2nd-degree lookup) is the next big thing. Other stuf
 
 ## License & author
 
-Apache 2.0. Built by Josh Botz — [@joshthebotz](https://www.linkedin.com/in/joshthebotz/). If ApplyBrief helped you land something, I'd love to hear about it: josh@pillarsecurity.io.
+Apache 2.0. Built by Josh Botz — [@joshbotz](https://www.linkedin.com/in/joshbotz/). If ApplyBrief helped you land something, I'd love to hear about it: josh@pillarsecurity.io.
